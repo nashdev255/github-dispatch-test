@@ -12,5 +12,15 @@ jobs:
   echo-something:
     runs-on: ubuntu-latest
     steps:
-      - run: echoSomething ${{ github.event.inputs.message }}
-      
+    - uses: actions/checkout@v2
+      with:
+        ref: 'main'
+    
+    - name: Install g++
+      run: sudo apt-get install g++ -y
+
+    - name: Compileand Run C++ Program
+      run: |
+        g++ echoSomething.cp -o echoSomething -std=c++17
+        ./echoSomething ${{ github.event.inputs.message }}
+        
