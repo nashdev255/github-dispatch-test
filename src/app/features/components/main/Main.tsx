@@ -1,8 +1,31 @@
 'use client';
 
-const Main = () => {
-  const handleSubmit = () => {
+import { useState } from 'react';
 
+const Main = () => {
+  const handleSubmit = async () => {
+    const formElement = document.querySelector('form');
+    const formData = new FormData(formElement!);
+
+    const message = formData.get('message')?.toString();
+
+    try {
+      const res = await fetch(
+        'https://api.github.com/repos/nashdev255/github-dispatch-test/actions/workflows/echo.yml/dispatches',
+        {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GITHUB_DISPATCH_TOKEN}`,
+          },
+          body: `{"ref":"master","inputs":{"message": "${message}"}}`
+        }
+      );
+    } catch ( error ) {
+      alert('Faild to post data: ' + error);
+    } finally {
+
+    }
   };
 
   return (
@@ -13,7 +36,7 @@ const Main = () => {
       >
         <input
           type="text"
-          name="str"
+          name="message"
           placeholder="Type something"
           className="px-4 py-2 border-2 rounded-lg shadow-lg"
           required
