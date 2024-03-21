@@ -11,9 +11,6 @@ on:
 jobs:
   echo-something:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: commands/
     steps:
-      - run: echoSomething ${{ github.event.inputs.message }}
+      - run: commands/echoSomething ${{ github.event.inputs.message }}
       
