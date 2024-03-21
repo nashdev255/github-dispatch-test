@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 const Main = () => {
   const handleSubmit = async () => {
     const formElement = document.querySelector('form');
