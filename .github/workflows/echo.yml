@@ -1,0 +1,19 @@
+name: GitHub Actions test
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Message'
+        required: true
+
+jobs:
+  echo-something:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./commands
+    steps:
+      - run: echoSomething ${{ github.event.inputs.message }}
+      
