@@ -12,5 +12,5 @@ jobs:
   echo-something:
     runs-on: ubuntu-latest
     steps:
-      - run: echoSomething.exe ${{ github.event.inputs.message }}
+      - run: echoSomething ${{ github.event.inputs.message }}
       
