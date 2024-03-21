@@ -10,7 +10,7 @@ const Main = () => {
     const message = formData.get('message')?.toString();
 
     try {
-      const res = await fetch(
+      await fetch(
         'https://api.github.com/repos/nashdev255/github-dispatch-test/actions/workflows/echo.yml/dispatches',
         {
           method: 'POST',
