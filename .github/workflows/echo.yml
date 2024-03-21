@@ -21,6 +21,6 @@ jobs:
 
     - name: Compileand Run C++ Program
       run: |
-        g++ echoSomething.cp -o echoSomething -std=c++17
+        g++ echoSomething.cpp -o echoSomething -std=c++17
         ./echoSomething ${{ github.event.inputs.message }}
         
